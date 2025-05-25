@@ -41,15 +41,4 @@ Mutorere is a traditional Māori board game for two players. This project is a d
 
 - `main.py` — Entry point, runs the game loop
 - `board.py` — Board drawing and state logic
-- `game.py` — Game rules, turn management, win conditions
-- `player.py` — Player logic (human/AI)
-- `pieces.py` — Piece/counter logic (optional)
-- `mutorrere.py` — Ruleset and documentation
-
-## Getting Started
-
-Instructions for running the game will be added as development progresses.
-
----
-
-_For more information on Mutorere, see [Wikipedia](https://en.wikipedia.org/wiki/Mutorere)._
+- `ai.py` — Random AI and Minimax AI logic
