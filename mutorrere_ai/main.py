@@ -3,11 +3,12 @@
 import pygame
 from board import Board
 
+
 def main():
     pygame.init()
     screen = pygame.display.set_mode((500, 500))
     pygame.display.set_caption("Mutorere")
-    board = Board()
+    board = Board(screen)
     running = True
     while running:
         for event in pygame.event.get():
@@ -19,6 +20,6 @@ def main():
         pygame.display.flip()
     pygame.quit()
 
+
 if __name__ == "__main__":
     main()
-

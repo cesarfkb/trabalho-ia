@@ -16,10 +16,11 @@ BLACK = (0, 0, 0)
 GREY = (220, 220, 220)
 BG_COLOR = (245, 245, 245)
 
+
 class Board:
     def __init__(self, screen=None):
         self.positions = self.calculate_positions()
-        self.state = [0]*9
+        self.state = [0] * 9
         for i in range(4):
             self.state[i] = 1  # White
         for i in range(4, 8):
@@ -40,11 +41,11 @@ class Board:
         choosing = True
         while choosing:
             self.screen.fill(BG_COLOR)
-            self.draw_text_center("Choose Game Mode", 100, font)
-            pygame.draw.rect(self.screen, (200,200,200), (100,180,300,60))
-            self.draw_text_center("1 Player (vs AI)", 210, small_font)
-            pygame.draw.rect(self.screen, (200,200,200), (100,270,300,60))
-            self.draw_text_center("2 Players", 300, small_font)
+            self.draw_text_center("Escolha o modo de jogo", 100, font)
+            pygame.draw.rect(self.screen, (200, 200, 200), (100, 180, 300, 60))
+            self.draw_text_center("1 Jogador (vs. IA)", 210, small_font)
+            pygame.draw.rect(self.screen, (200, 200, 200), (100, 270, 300, 60))
+            self.draw_text_center("2 Jogadores", 300, small_font)
             pygame.display.flip()
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -67,11 +68,11 @@ class Board:
         choosing = True
         while choosing:
             self.screen.fill(BG_COLOR)
-            self.draw_text_center("Choose AI Mode", 100, font)
-            pygame.draw.rect(self.screen, (200,200,200), (100,180,300,60))
-            self.draw_text_center("Random AI", 210, small_font)
-            pygame.draw.rect(self.screen, (200,200,200), (100,270,300,60))
-            self.draw_text_center("Minimax AI", 300, small_font)
+            self.draw_text_center("Escolha o modo da IA", 100, font)
+            pygame.draw.rect(self.screen, (200, 200, 200), (100, 180, 300, 60))
+            self.draw_text_center("IA Randômica", 210, small_font)
+            pygame.draw.rect(self.screen, (200, 200, 200), (100, 270, 300, 60))
+            self.draw_text_center("IA Minimax", 300, small_font)
             pygame.display.flip()
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -93,13 +94,15 @@ class Board:
         self.player_color = None
         while choosing:
             self.screen.fill(BG_COLOR)
-            self.draw_text_center("Choose Your Color", 120, font)
+            self.draw_text_center("Escolha sua cor", 120, font)
             # Draw White box and text
-            pygame.draw.rect(self.screen, (255,255,255), (100,200,120,60))
-            self.draw_text_boxed("White", 100, 200, 120, 60, small_font, (0,0,0))
+            pygame.draw.rect(self.screen, (255, 255, 255), (100, 200, 120, 60))
+            self.draw_text_boxed("Branca", 100, 200, 120, 60, small_font, (0, 0, 0))
             # Draw Black box and text
-            pygame.draw.rect(self.screen, (0,0,0), (280,200,120,60))
-            self.draw_text_boxed("Black", 280, 200, 120, 60, small_font, (255,255,255))
+            pygame.draw.rect(self.screen, (0, 0, 0), (280, 200, 120, 60))
+            self.draw_text_boxed(
+                "Preta", 280, 200, 120, 60, small_font, (255, 255, 255)
+            )
             pygame.display.flip()
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -120,10 +123,10 @@ class Board:
 
     def draw_text_boxed(self, text, x, y, w, h, font, color):
         surf = font.render(text, True, color)
-        rect = surf.get_rect(center=(x + w//2, y + h//2))
+        rect = surf.get_rect(center=(x + w // 2, y + h // 2))
         self.screen.blit(surf, rect)
 
-    def draw_text_center(self, text, y, font, color=(0,0,0)):
+    def draw_text_center(self, text, y, font, color=(0, 0, 0)):
         surf = font.render(text, True, color)
         rect = surf.get_rect(center=(CENTER, y))
         self.screen.blit(surf, rect)
@@ -142,15 +145,21 @@ class Board:
         screen.fill(BG_COLOR)
         # Draw turn text
         font = pygame.font.SysFont(None, 36)
-        turn_text = "White's Turn" if self.current_player == 1 else "Black's Turn"
-        text_color = (0,0,0) if self.current_player == 1 else (0,0,0)
+        turn_text = "Brancas jogam" if self.current_player == 1 else "Pretas jogam"
+        text_color = (0, 0, 0) if self.current_player == 1 else (0, 0, 0)
         text_surf = font.render(turn_text, True, text_color)
         text_rect = text_surf.get_rect(center=(CENTER, 30))
         screen.blit(text_surf, text_rect)
         # Draw lines (connections)
         for i in range(OUTER_POINTS):
             # Outer ring
-            pygame.draw.line(screen, BLACK, self.positions[i], self.positions[(i+1)%OUTER_POINTS], 2)
+            pygame.draw.line(
+                screen,
+                BLACK,
+                self.positions[i],
+                self.positions[(i + 1) % OUTER_POINTS],
+                2,
+            )
             # Spokes
             pygame.draw.line(screen, BLACK, self.positions[i], self.positions[8], 2)
         # Draw points
@@ -159,14 +168,14 @@ class Board:
         # Draw pieces
         for i, (x, y) in enumerate(self.positions):
             if self.state[i] == 1:
-                pygame.draw.circle(screen, WHITE, (x, y), PIECE_RADIUS-5)
-                pygame.draw.circle(screen, BLACK, (x, y), PIECE_RADIUS-5, 2)
+                pygame.draw.circle(screen, WHITE, (x, y), PIECE_RADIUS - 5)
+                pygame.draw.circle(screen, BLACK, (x, y), PIECE_RADIUS - 5, 2)
             elif self.state[i] == 2:
-                pygame.draw.circle(screen, BLACK, (x, y), PIECE_RADIUS-5)
-                pygame.draw.circle(screen, BLACK, (x, y), PIECE_RADIUS-5, 2)
+                pygame.draw.circle(screen, BLACK, (x, y), PIECE_RADIUS - 5)
+                pygame.draw.circle(screen, BLACK, (x, y), PIECE_RADIUS - 5, 2)
             # Highlight selected piece
             if self.selected == i:
-                pygame.draw.circle(screen, (0, 255, 0), (x, y), PIECE_RADIUS-10, 3)
+                pygame.draw.circle(screen, (0, 255, 0), (x, y), PIECE_RADIUS - 10, 3)
         # Draw win message
         if self.win_message:
             win_font = pygame.font.SysFont(None, 48)
@@ -207,8 +216,8 @@ class Board:
             x = int(start_pos[0] * (1 - t) + end_pos[0] * t)
             y = int(start_pos[1] * (1 - t) + end_pos[1] * t)
             self.draw(self.screen)
-            pygame.draw.circle(self.screen, color, (x, y), PIECE_RADIUS-5)
-            pygame.draw.circle(self.screen, BLACK, (x, y), PIECE_RADIUS-5, 2)
+            pygame.draw.circle(self.screen, color, (x, y), PIECE_RADIUS - 5)
+            pygame.draw.circle(self.screen, BLACK, (x, y), PIECE_RADIUS - 5, 2)
             pygame.display.flip()
             pygame.time.delay(10)
 
@@ -231,9 +240,11 @@ class Board:
                 opponent = 2 if self.current_player == 1 else 1
                 adj = self.get_adjacent(from_idx)
                 if not any(self.state[a] == opponent for a in adj):
-                    winner = "White" if self.current_player == 1 else "Black"
-                    print("AI cannot move to the center unless the piece is adjacent to an opponent's piece!")
-                    self.win_message = f"{winner} wins!"
+                    winner = "Brancas" if self.current_player == 1 else "Pretas"
+                    print(
+                        "A IA não pode mover para o centro porque não está adjacente a uma peça adversária!"
+                    )
+                    self.win_message = f"{winner} ganham!"
                     return
             self.animate_move(from_idx, to_idx)
             self.state[to_idx] = self.state[from_idx]
@@ -242,14 +253,13 @@ class Board:
             self.current_player = 2 if self.current_player == 1 else 1
             # Check if next player can move
             if not self.player_has_moves(self.current_player):
-                winner = "White" if self.current_player == 1 else "Black"
-                print(f"Player {self.current_player} cannot move. Game over!")
-                self.win_message = f"{winner} wins!"
+                winner = "Brancas" if self.current_player == 2 else "Pretas"
+                print(f"Jogador {self.current_player} não tem movimentos válidos. ")
+                self.win_message = f"{winner} ganham!"
         else:
-            print("No move found") # No move found, AI lost
-            winner = "White" if self.current_player == 2 else "Black"
-            self.win_message = f"{winner} wins!"
-
+            print("Nenhum movimento válido encontrado")  # No move found, AI lost
+            winner = "Brancas" if self.current_player == 2 else "Pretas"
+            self.win_message = f"{winner} ganham!"
 
     def handle_click(self, pos):
 
@@ -271,7 +281,7 @@ class Board:
                     if self.state[i] == 0 and self.selected != i:
                         # Only allow move to adjacent spot
                         if i not in self.get_adjacent(self.selected):
-                            print("You can only move to an adjacent spot!")
+                            print("Você só pode mover para um espaço adjacente!")
                             self.selected = None
                             break
                         # Only apply the adjacent-opponent rule if moving to the center
@@ -279,7 +289,9 @@ class Board:
                             opponent = 2 if self.current_player == 1 else 1
                             adj = self.get_adjacent(self.selected)
                             if not any(self.state[a] == opponent for a in adj):
-                                print("You can only move to the center if your piece is adjacent to an opponent's piece!")
+                                print(
+                                    "Você só pode mover para o centro se estiver adjacente a uma peça adversária!"
+                                )
                                 self.selected = None
                                 break
                         self.animate_move(self.selected, i)
@@ -293,20 +305,26 @@ class Board:
                         self.current_player = 2 if self.current_player == 1 else 1
                         # Check if next player can move
                         if not self.player_has_moves(self.current_player):
-                            print(f"Player {self.current_player} cannot move. Game over!")
+                            print(
+                                f"Jogador {self.current_player} não tem movimentos válidos."
+                            )
                         # If playing vs AI and it's now AI's turn, make AI move
-                        if self.num_players == 1 and self.current_player != self.player_color:
+                        if (
+                            self.num_players == 1
+                            and self.current_player != self.player_color
+                        ):
                             self.ai_move()
                     elif self.state[i] == self.current_player:
                         # Select a different piece
                         self.selected = i
                 break
 
+
 # For testing: run this file to display the board
 if __name__ == "__main__":
     pygame.init()
     screen = pygame.display.set_mode((BOARD_SIZE, BOARD_SIZE))
-    pygame.display.set_caption("Mutorere Board")
+    pygame.display.set_caption("Mutorere")
     board = Board(screen)
     running = True
     while running:
