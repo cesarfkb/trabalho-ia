@@ -1,5 +1,6 @@
 import pygame
 import sys
+import ai
 
 # Board Constants
 WINDOW_SIZE = 700  # Total window size
@@ -24,6 +25,8 @@ selected_piece = None # Index of the currently selected piece
 current_player = 1 # 1 for black, 2 for white
 possible_moves = [] # List of possible moves for the selected piece
 king_captured = False # Flag to check if the king is captured
+ai_mode = True # Flag to check if AI mode is enabled
+player_color = 1 # 1 for black, 2 for white
 
 def draw_borders():
     """Draw the borders around the grid."""
@@ -349,6 +352,29 @@ def check_king_capture(index):
             return True
     return False
 
+def ai_move():
+    print("AI is making a move...")
+    global current_player
+    move = ai.get_best_move(board, current_player, 3)
+    print(f"AI move: {move}")
+    if move is not None:
+        from_index, to_index = move
+        board[to_index] = board[from_index]
+        board[from_index] = 0
+        # After moving, check if there's a capture
+        check_capture(to_index)
+        # After moving, check if the piece is a king
+        if board[to_index] == 3:
+            # Check if the king is on the edge of the board
+            if (to_index % GRID_SIZE == 0 
+                or to_index % GRID_SIZE == GRID_SIZE - 1 
+                or to_index // GRID_SIZE == 0 
+                or to_index // GRID_SIZE == GRID_SIZE - 1):
+                # If it is, the game is over
+                print("Winner: White")
+                current_player = 0
+
+
 def handle_click(pos):
 
     """Handle mouse click events."""
@@ -360,11 +386,18 @@ def handle_click(pos):
         row = (y - BORDER_SIZE) // CELL_SIZE
         index = row * GRID_SIZE + col
         
+
         global selected_piece
         global current_player
+
+        if ai_mode and current_player != player_color:
+            ai_move()
+            current_player = player_color
+            return
+
+
         # Check if the clicked cell is a piece
         if board[index] != 0:
-            
             if board[index] == 3:
                 # If the clicked piece is the king, select it
                 selected_piece = index if current_player == 2 else selected_piece
