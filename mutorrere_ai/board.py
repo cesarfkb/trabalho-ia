@@ -261,10 +261,23 @@ class Board:
             winner = "Brancas" if self.current_player == 2 else "Pretas"
             self.win_message = f"{winner} ganham!"
 
-    def handle_click(self, pos):
+    def reset(self):
+        self.state = [0] * 9
+        for i in range(4):
+            self.state[i] = 1  # White
+        for i in range(4, 8):
+            self.state[i] = 2  # Black
+        self.selected = None
+        self.current_player = 1
+        self.first_move_done = False
+        self.win_message = None
+        # Optionally, re-ask for mode/color if you want
+        # self.show_start_screen()
 
-        # Check if game is over
+    def handle_click(self, pos):
+        # If game is over, any click resets the game
         if self.win_message:
+            self.reset()
             return
 
         # Find which point was clicked
