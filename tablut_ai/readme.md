@@ -1,30 +1,29 @@
-# Rules for Tablut
+# Regras do Tablut
 
-Rules for Tablut
-The rules recorded in Latin by Carl Linnaeus give almost a complete game, lacking only a few particulars, such as who moves first. Below is presented a complete and playable scheme, followed by notes on what has been added, or in one instance changed, from Linnaeus' original Latin description.
+As regras registradas em latim por Carl Linnaeus fornecem quase um jogo completo, faltando apenas alguns detalhes, como quem faz o primeiro movimento. Abaixo está um esquema completo e jogável, seguido de notas sobre o que foi adicionado ou, em um caso, alterado em relação à descrição original em latim de Linnaeus.
 
-1. Tablut is played on a board of 9×9 squares.
+1. O Tablut é jogado em um tabuleiro de 9×9 casas.
 
-2. There are 25 pieces: a king and his eight defenders, and sixteen attackers. These are placed in the shape of a cross with serifs, as in the diagram.
+2. Existem 25 peças: um rei e seus oito defensores, e dezesseis atacantes. Elas são posicionadas em forma de cruz com serifas, conforme o diagrama.
 
-3. The attacking side takes the first move.
+3. O lado atacante faz o primeiro movimento.
 
-4. Pieces move any distance orthogonally, not landing on nor jumping over other pieces on the board.
+4. As peças se movem qualquer distância ortogonalmente, não podendo pousar nem pular sobre outras peças no tabuleiro.
 
-5. No piece may land on the central square, called the "castle", not even the king once he has left it.
+5. Nenhuma peça pode pousar na casa central, chamada de "castelo", nem mesmo o rei depois que ele a deixa.
 
-6. A piece other than the king is captured when it is surrounded orthogonally on two opposite squares by enemies. The king can pair up with a defender for the purpose of capturing attackers.
+6. Uma peça que não seja o rei é capturada quando está cercada ortogonalmente em dois lados opostos por inimigos. O rei pode se juntar a um defensor para capturar atacantes.
 
-7. A piece may also be captured between an enemy and the empty castle.
+7. Uma peça também pode ser capturada entre um inimigo e o castelo vazio.
 
-8. When in the castle, the king is captured by surrounding him on four orthogonal sides with attackers.
+8. Quando está no castelo, o rei é capturado ao ser cercado em seus quatro lados ortogonais por atacantes.
 
-9. When stood beside the castle, the king may be captured by surrounding him on the remaining three sides with attackers.
+9. Quando está ao lado do castelo, o rei pode ser capturado ao ser cercado nos três lados restantes por atacantes.
 
-10. Elsewhere on the board, the king is captured as other pieces.
+10. Em outras partes do tabuleiro, o rei é capturado como as demais peças.
 
-11. If the king when in the castle is surrounded on three sides by attackers, and on the fourth by a defender, the defender may be captured by surrounding it between an attacker and the king.
+11. Se o rei, estando no castelo, estiver cercado em três lados por atacantes e no quarto por um defensor, o defensor pode ser capturado ao ser cercado entre um atacante e o rei.
 
-12. The king wins the game on reaching any square at the edge of the board. The attackers win if they capture the king.
+12. O rei vence o jogo ao alcançar qualquer casa na borda do tabuleiro. Os atacantes vencem se capturarem o rei.
 
-13. The game is drawn if a position is repeated, if a player cannot move, or if the players otherwise agree it.
+13. O jogo termina empatado se uma posição se repetir, se um jogador não puder se mover ou se os jogadores assim concordarem.
