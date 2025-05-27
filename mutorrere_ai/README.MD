@@ -1,44 +1,44 @@
-# Mutorere (Traditional Māori Game)
+# Mutorere (Jogo Tradicional Māori)
 
-Mutorere is a traditional Māori board game for two players. This project is a digital implementation of the game.
+Mutorere é um jogo de tabuleiro tradicional Māori para dois jogadores. Este projeto é uma implementação digital do jogo.
 
-## Game Rules
+## Regras do Jogo
 
-### 1. Counters
+### 1. Peças
 
-- Each player controls **four counters**, called _perepere_. There are white and black pieces.
+- Cada jogador controla **quatro peças**, chamadas _perepere_. Existem peças brancas e pretas.
 
-### 2. The Board
+### 2. O Tabuleiro
 
-- The board consists of **eight outer points** (_kewai_) arranged in a circle, and **one central point** (_pūtahi_).
+- O tabuleiro consiste em **oito pontos externos** (_kewai_) dispostos em círculo e **um ponto central** (_pūtahi_).
 
-### 3. Setup
+### 3. Preparação
 
-- At the start of the game:
-  - Each player places their four counters on **four consecutive kewai**.
-  - The _pūtahi_ (center) is left empty.
+- No início do jogo:
+  - Cada jogador coloca suas quatro peças em **quatro kewai consecutivos**.
+  - O _pūtahi_ (centro) permanece vazio.
 
-### 4. Turns & Movement
+### 4. Turnos & Movimentação
 
-- Players take turns, alternating between each other.
-- On each turn, a player must:
-  - Move one of their counters to an **empty adjacent point**.
-  - Movement is allowed only to **directly connected (adjacent) points**.
-  - A counter may move to the _pūtahi_ (center) **only if it is adjacent to an opponent's counter**.
+- Os jogadores se revezam, alternando entre si.
+- Em cada turno, o jogador deve:
+  - Mover uma de suas peças para um **ponto adjacente vazio**.
+  - O movimento é permitido apenas para **pontos diretamente conectados (adjacentes)**.
+  - Uma peça pode mover-se para o _pūtahi_ (centro) **apenas se estiver adjacente a uma peça do oponente**.
 
-### 5. Objective
+### 5. Objetivo
 
-- The winner is the player who **blocks all of the opponent's counters**, leaving them with no legal moves.
+- O vencedor é o jogador que **bloquear todas as peças do oponente**, deixando-o sem movimentos legais.
 
-### 6. Additional Notes
+### 6. Observações Adicionais
 
-- Counters **cannot jump over other counters**.
-- Only **one counter may occupy a point at any time**.
+- As peças **não podem pular sobre outras peças**.
+- Apenas **uma peça pode ocupar um ponto por vez**.
 
 ---
 
-## Project Structure
+## Estrutura do Projeto
 
-- `main.py` — Entry point, runs the game loop
-- `board.py` — Board drawing and state logic
-- `ai.py` — Random AI and Minimax AI logic
+- `main.py` — Ponto de entrada, executa o loop do jogo
+- `board.py` — Desenho do tabuleiro e lógica de estado
+- `ai.py` — Lógica de IA aleatória e IA Minimax
